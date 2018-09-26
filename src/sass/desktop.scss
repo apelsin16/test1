@@ -190,13 +190,55 @@
     .custom-navbar {
         position: static;
         top: 0;
-        padding: 0;   
-        background: #fff;   
+        padding: 0;
+        background: #fff;
         display: flex;
         justify-content: flex-end;
+
         &::after {
             display: none;
         }
     }
+
+    .third-section {
+        padding-bottom: 7rem;
+    }
+
+    .carousel-inner .active,
+    .carousel-inner .active+.carousel-item,
+    .carousel-inner .active+.carousel-item+.carousel-item,
+    .carousel-inner .active+.carousel-item+.carousel-item+.carousel-item {
+        display: block;
+    }
+
+    .carousel-link__wrapper {
+        position: relative;
+        background: #fff;
+        border-top: 8px solid #fde8c3;
+        border-left: 8px solid #fde8c3;
+        border-radius: 10px;
+        width: 231px;
+        height: 216px;
+        margin-bottom: 1rem;
+      }
+    
+      .carousel-link {
+          display: block;
+        width: 100%;
+        height: 100%;
+       
+      }
+
+      .carousel-link img {
+        //   width: 247px;
+        //   height: 232px;
+            position: absolute;
+            top: 5px;
+            left: 5px ;
+      }
+
+      #carousel {
+          padding-bottom: 0;
+      }
 
 }
