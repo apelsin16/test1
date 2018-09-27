@@ -9,10 +9,7 @@ import certificate1 from './img/1.jpg';
 import certificate2 from './img/2.jpg';
 import certificate3 from './img/3.jpg';
 import certificate4 from './img/4.jpg';
-import certificate5 from './img/5.jpg';
-import certificate6 from './img/6.jpg';
-import certificate7 from './img/7.jpg';
-import certificate8 from './img/8.jpg';
+
 
 
 // initHeader();
@@ -28,58 +25,88 @@ const img3 = document.querySelector('#img3');
 img3.src = certificate3;
 const img4 = document.querySelector('#img4');
 img4.src = certificate4;
-const img5 = document.querySelector('#img5');
-img5.src = certificate5;
-const img6 = document.querySelector('#img6');
-img6.src = certificate6;
-const img7 = document.querySelector('#img7');
-img7.src = certificate7;
-const img8 = document.querySelector('#img8');
-img8.src = certificate8;
+
 
 
 
 // greet('Webpack is awesome');
 
 
-// $('#carouselExample').on('slide.bs.carousel', function (e) {
 
-  
-//     var $e = $(e.relatedTarget);
-//     var idx = $e.index();
-//     var itemsPerSlide = 4;
-//     var totalItems = $('.carousel-item').length;
+
+
+function getTimeRemaining(endtime) {
+    var t = Date.parse(endtime) - Date.parse(new Date());
     
-//     if (idx >= totalItems-(itemsPerSlide-1)) {
-//         var it = itemsPerSlide - (totalItems - idx);
-//         for (var i=0; i<it; i++) {
-//             // append slides to end
-//             if (e.direction=="left") {
-//                 $('.carousel-item').eq(i).appendTo('.carousel-inner');
-//             }
-//             else {
-//                 $('.carousel-item').eq(0).appendTo('.carousel-inner');
-//             }
-//         }
-//     }
-// });
+    var minutes = Math.floor((t / 1000 / 60) % 60);
+    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    var days = Math.floor(t / (1000 * 60 * 60 * 24));
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      
+    };
+  }
+   
+  function initializeClock(id, endtime) {
+   
+    var days1 = document.getElementById('days1');
+    var days2 = document.getElementById('days2');
+    var hours1 = document.getElementById('hours1');
+    var hours2 = document.getElementById('hours2');
+    var min1 = document.getElementById('min1');
+    var min2 = document.getElementById('min2');
+    
+   
+    function updateClock() {
+      var t = getTimeRemaining(endtime);
+   
+      days1.innerHTML = ('0' + t.days).slice(1,2);
+      days2.innerHTML = t.days%10;
+      hours1.innerHTML = ('0' + t.hours).slice(1,2);
+      hours2.innerHTML = t.hours%10;
+      min1.innerHTML = ('0' + t.minutes).slice(1,2);
+      min2.innerHTML = t.minutes%10;
+      
+   
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    }
+   
+    updateClock();
+    var timeinterval = setInterval(updateClock, 60000);
+  }
+   
+  var deadline="October 15 2018 00:00:00 GMT+0300"; //for Ukraine
+  
+  initializeClock('timer', deadline);
 
 
-//   $('#carouselExample').carousel({ 
-//                 interval: 2000
-//         });
-
-
-//   $(document).ready(function() {
-// /* show lightbox when clicking a thumbnail */
-//     $('a.thumb').click(function(event){
-//       event.preventDefault();
-//       var content = $('.modal-body');
-//       content.empty();
-//         var title = $(this).attr("title");
-//         $('.modal-title').html(title);        
-//         content.html($(this).html());
-//         $(".modal-profile").modal({show:true});
-//     });
-
-//   });
+  $(document).ready(function() {
+    var $lightbox = $('#lightbox');
+    
+    $('[data-target="#lightbox"]').on('click', function(event) {
+        var $img = $(this).find('img'), 
+            src = $img.attr('src'),
+            alt = $img.attr('alt'),
+            css = {
+                'maxWidth': $(window).width() - 100,
+                'maxHeight': $(window).height() - 100
+            };
+    
+        $lightbox.find('.close').addClass('hidden');
+        $lightbox.find('img').attr('src', src);
+        $lightbox.find('img').attr('alt', alt);
+        $lightbox.find('img').css(css);
+    });
+    
+    $lightbox.on('shown.bs.modal', function (e) {
+        var $img = $lightbox.find('img');
+            
+        $lightbox.find('.modal-dialog').css({'width': $img.width()});
+        $lightbox.find('.close').removeClass('hidden');
+    });
+});

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <title>Love is...</title>
 </head>
 
@@ -70,7 +70,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-xl-6">
-          <div class="timer">
+          <div class="timer" id="timer">
             <p class="timer__title text-center">До старта</p>
             <div class="timer-element__wrapper row">
               <div class="d-flex col-12 col-xl-6 justify-content-center">
@@ -261,14 +261,14 @@
             <div class="carousel-item active">
 
               <div class="carousel-link__wrapper">
-                <a href="" class="carousel-link" id='img5'>
+                <a href="" class="carousel-link" data-toggle="modal" data-target="#lightbox">
                   <img class="d-block w-100 carousel-image img-fluid" src="" alt="Сетрификат" id='img1' data-action='zoom'>
                 </a>
               </div>
             </div>
             <div class="carousel-item">
               <div class="carousel-link__wrapper">
-                <a href="" class="carousel-link" id='img6'>
+                <a href="" class="carousel-link" data-toggle="modal" data-target="#lightbox">
                   <img class="d-block w-100 carousel-image img-fluid" src="" alt="Сетрификат" id='img2'>
                 </a>
               </div>
@@ -277,7 +277,7 @@
             <div class="carousel-item">
 
               <div class="carousel-link__wrapper">
-                <a href="" class="carousel-link" id='img7'>
+                <a href="" class="carousel-link"  data-toggle="modal" data-target="#lightbox">
                   <img class="d-block w-100 carousel-image  img-fluid" src="" alt="Сетрификат" id='img3'>
                 </a>
               </div>
@@ -285,7 +285,7 @@
 
             <div class="carousel-item">
               <div class="carousel-link__wrapper">
-                <a href="" class="carousel-link" id='img8'>
+                <a href="" class="carousel-link" data-toggle="modal" data-target="#lightbox">
                   <img class="d-block w-100 carousel-image img-fluid" src="" alt="Сетрификат" id='img4'>
                 </a>
               </div>
@@ -299,7 +299,16 @@
       </div>
     </div>
 
-  
+    <div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
+          <div class="modal-content">
+              <div class="modal-body">
+                  <img src="" alt="" />
+              </div>
+          </div>
+      </div>
+  </div>
 
 
 
