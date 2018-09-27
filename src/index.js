@@ -1,38 +1,26 @@
 import 'bootstrap';
-
-// import greet from './greet';
-
-// import initHeader from './header';
 import './sass/styles.scss';
-import './sass/form.scss';
 import certificate1 from './img/1.jpg';
 import certificate2 from './img/2.jpg';
 import certificate3 from './img/3.jpg';
 import certificate4 from './img/4.jpg';
-
-
-
-// initHeader();
-
-// const img = document.createElement('img');
-// img.src = tigerImage;
+import certificate5 from './img/5.jpg';
+import certificate6 from './img/6.jpg';
+import certificate7 from './img/7.jpg';
+import certificate8 from './img/8.jpg';
 
 const img1 = document.querySelector('#img1');
 img1.src = certificate1;
+img1.srcset = certificate5;
 const img2 = document.querySelector('#img2');
 img2.src = certificate2;
+img2.srcsetg = certificate6;
 const img3 = document.querySelector('#img3');
 img3.src = certificate3;
+img3.srcset = certificate7;
 const img4 = document.querySelector('#img4');
 img4.src = certificate4;
-
-
-
-
-// greet('Webpack is awesome');
-
-
-
+img4.srcset = certificate8;
 
 
 function getTimeRemaining(endtime) {
@@ -90,8 +78,9 @@ function getTimeRemaining(endtime) {
     
     $('[data-target="#lightbox"]').on('click', function(event) {
         var $img = $(this).find('img'), 
-            src = $img.attr('src'),
+            src = $img.attr('srcset'),
             alt = $img.attr('alt'),
+            
             css = {
                 'maxWidth': $(window).width() - 100,
                 'maxHeight': $(window).height() - 100
