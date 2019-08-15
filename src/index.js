@@ -50,10 +50,17 @@ function getTimeRemaining(endtime) {
    
     function updateClock() {
       var t = getTimeRemaining(endtime);
+
+      function tens (number) {
+        if (toString(number.length) === 2 ) {
+          return number.slice(0, 1);
+        }
+        return "0"
+      }
    
       days1.innerHTML = ('0' + t.days).slice(1,2);
       days2.innerHTML = t.days%10;
-      hours1.innerHTML = ('0' + t.hours).slice(0,1);
+      hours1.innerHTML = tens(t.hours);
       hours2.innerHTML = t.hours%10;
       min1.innerHTML = ('0' + t.minutes).slice(1,2);
       min2.innerHTML = t.minutes%10;
