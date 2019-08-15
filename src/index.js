@@ -53,7 +53,7 @@ function getTimeRemaining(endtime) {
    
       days1.innerHTML = ('0' + t.days).slice(1,2);
       days2.innerHTML = t.days%10;
-      hours1.innerHTML = ('0' + t.hours).slice(1,2);
+      hours1.innerHTML = ('0' + t.hours).slice(0,1);
       hours2.innerHTML = t.hours%10;
       min1.innerHTML = ('0' + t.minutes).slice(1,2);
       min2.innerHTML = t.minutes%10;
@@ -68,7 +68,7 @@ function getTimeRemaining(endtime) {
     var timeinterval = setInterval(updateClock, 60000);
   }
    
-  var deadline="October 15 2018 00:00:00 GMT+0300"; //for Ukraine
+  var deadline="October 15 2019 00:00:00 GMT+0300"; //for Ukraine
   
   initializeClock('timer', deadline);
 
